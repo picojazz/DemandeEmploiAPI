@@ -1,7 +1,9 @@
 package com.picojazzemploiapi.demo.dao;
 
-import com.picojazzemploiapi.demo.entities.User;
+
+import com.picojazzemploiapi.demo.entities.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User,Long>{
+public interface UserRepository extends JpaRepository<Users,Long>{
+
 }

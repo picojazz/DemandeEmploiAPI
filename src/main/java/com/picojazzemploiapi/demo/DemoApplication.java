@@ -2,6 +2,7 @@ package com.picojazzemploiapi.demo;
 
 import com.picojazzemploiapi.demo.dao.UserRepository;
 import com.picojazzemploiapi.demo.entities.User;
+import com.picojazzemploiapi.demo.entities.Users;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -16,7 +17,7 @@ public class DemoApplication {
 
 		ApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
 		UserRepository ur = ctx.getBean(UserRepository.class);
-		ur.save(new User("picojazz","amadou","picojazzz@gmail.com"));
+		ur.save(new Users("picojazz","amadou","picojazzz@gmail.com"));
 	}
 }
 @Controller

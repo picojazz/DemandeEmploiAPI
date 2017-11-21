@@ -9,7 +9,7 @@ public class Role {
     private Integer id;
     private String role;
     @ManyToMany(mappedBy = "roles")
-    private List<User> users;
+    private List<Users> users;
 
     public Role(String role) {
         this.role = role;

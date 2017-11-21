@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-public class User {
+public class Users {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
@@ -25,10 +25,10 @@ public class User {
     private List<Role> roles;
 
 
-    public User() {
+    public Users() {
     }
 
-    public User(String username, String password, String email) {
+    public Users(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
