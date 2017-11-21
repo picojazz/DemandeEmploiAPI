@@ -14,10 +14,9 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 
-		//ApplicationContext ctx =
-				SpringApplication.run(DemoApplication.class, args);
-		//UserRepository ur = ctx.getBean(UserRepository.class);
-		//ur.save(new User("picojazz","amadou","picojazzz@gmail.com"));
+		ApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
+		UserRepository ur = ctx.getBean(UserRepository.class);
+		ur.save(new User("picojazz","amadou","picojazzz@gmail.com"));
 	}
 }
 @Controller
