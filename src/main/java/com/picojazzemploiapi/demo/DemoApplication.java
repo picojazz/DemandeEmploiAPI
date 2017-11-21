@@ -1,7 +1,10 @@
 package com.picojazzemploiapi.demo;
 
+import com.picojazzemploiapi.demo.dao.UserRepository;
+import com.picojazzemploiapi.demo.entities.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -10,7 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+
+		ApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
+		UserRepository ur = ctx.getBean(UserRepository.class);
+		ur.save(new User("picojazz","amadou","picojazzz@gmail.com"));
 	}
 }
 @Controller
