@@ -23,6 +23,9 @@ public class Users {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles",joinColumns = { @JoinColumn(name = "user_id") },inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private List<Role> roles;
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private Cv cv;
 
 
     public Users() {
@@ -80,5 +83,17 @@ public class Users {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", active=" + active +
+                ", cv=" + cv.getEmail() +
+                '}';
     }
 }
