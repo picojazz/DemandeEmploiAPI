@@ -1,5 +1,7 @@
 package com.picojazzemploiapi.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class Formation {
     private String school;
     @ManyToOne
     @JoinColumn(name = "id_cv")
+    @JsonIgnore
     private Cv cv;
 
     public Formation() {

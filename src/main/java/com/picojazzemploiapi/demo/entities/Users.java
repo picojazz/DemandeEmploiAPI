@@ -85,6 +85,14 @@ public class Users {
         this.roles = roles;
     }
 
+    public Cv getCv() {
+        return cv;
+    }
+
+    public void setCv(Cv cv) {
+        this.cv = cv;
+    }
+
     @Override
     public String toString() {
         return "Users{" +

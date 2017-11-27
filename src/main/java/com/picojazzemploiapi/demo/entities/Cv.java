@@ -1,5 +1,7 @@
 package com.picojazzemploiapi.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class Cv {
     private long tel;
     @OneToOne(mappedBy = "cv")
     @PrimaryKeyJoinColumn
+    @JsonIgnore
     private Users user;
     @OneToMany(mappedBy = "cv")
     private List<Formation> formations;

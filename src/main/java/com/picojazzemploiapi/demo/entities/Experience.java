@@ -1,5 +1,7 @@
 package com.picojazzemploiapi.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class Experience {
     private String about;
     @ManyToOne
     @JoinColumn(name = "id_cv")
+    @JsonIgnore
     private Cv cv;
 
     public Experience() {
