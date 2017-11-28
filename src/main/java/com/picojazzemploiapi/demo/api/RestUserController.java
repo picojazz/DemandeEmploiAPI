@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
-public class RestController {
+public class RestUserController {
     @Autowired
     private UserRepository ur;
 
