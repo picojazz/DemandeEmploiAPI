@@ -10,7 +10,7 @@ public class Experience {
     private Long id;
     private String begin;
     private String end;
-    private String postion;
+    private String position;
     private  String company;
     private String about;
     @ManyToOne
@@ -49,12 +49,12 @@ public class Experience {
         this.end = end;
     }
 
-    public String getPostion() {
-        return postion;
+    public String getPosition() {
+        return position;
     }
 
-    public void setPostion(String postion) {
-        this.postion = postion;
+    public void setPostion(String position) {
+        this.position = position;
     }
 
     public String getCompany() {
