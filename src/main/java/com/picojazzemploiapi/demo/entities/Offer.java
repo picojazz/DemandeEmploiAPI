@@ -1,21 +1,25 @@
 package com.picojazzemploiapi.demo.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Offer {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
+    @Lob
     private String about;
     private String place;
     private String contract;
     private int Salary;
     private Date dateCreate;
+    @ManyToMany
+    @JoinTable(name = "offerTags",joinColumns = {@JoinColumn(name="offerId")},inverseJoinColumns = {@JoinColumn(name="tagsId")})
+    private List<Tags> tags;
+
+
 
     public Offer() {
     }
