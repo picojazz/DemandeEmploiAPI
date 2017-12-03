@@ -1,9 +1,11 @@
 package com.picojazzemploiapi.demo;
 
 import com.picojazzemploiapi.demo.dao.CvRepository;
+import com.picojazzemploiapi.demo.dao.OfferRepository;
 import com.picojazzemploiapi.demo.dao.UserRepository;
 
 import com.picojazzemploiapi.demo.entities.Cv;
+import com.picojazzemploiapi.demo.entities.Offer;
 import com.picojazzemploiapi.demo.entities.Users;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,13 +14,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 @SpringBootApplication
 public class DemoApplication {
 
 	public static void main(String[] args) {
 
-		//ApplicationContext ctx =
+		ApplicationContext ctx =
 				SpringApplication.run(DemoApplication.class, args);
+		OfferRepository or = ctx.getBean(OfferRepository.class);
+		or.save(new Offer("web dev fullstack","hgghghghgjghffffghfghfghfg","dakar","cdi",150000,new Date()));
 		/*UserRepository ur = ctx.getBean(UserRepository.class);
 		CvRepository cvr = ctx.getBean(CvRepository.class);
 		Cv cv = new Cv(ur.findOne(new Long(2)));
