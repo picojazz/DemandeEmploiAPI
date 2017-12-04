@@ -16,13 +16,13 @@ public class RestOfferController {
     @Autowired
     private OfferRepository or;
 
-    @RequestMapping(value = "/offers",method = RequestMethod.GET)
+    @RequestMapping(value = "/api/offers",method = RequestMethod.GET)
     public List<Offer> offers(){
         return or.findAll();
     }
 
-    @RequestMapping(value = "/offers/{id}",method = RequestMethod.GET)
-    public Offer offer(@PathVariable long id){
+    @RequestMapping(value = "/api/offers/{id}",method = RequestMethod.GET)
+    public Offer offer(@PathVariable("id") long id){
         return or.findOne(id);
     }
 

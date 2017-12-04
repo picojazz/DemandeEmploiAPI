@@ -12,6 +12,8 @@ public class Offer {
     @Lob
     private String about;
     private String place;
+    private int lon;
+    private int lat;
     private String contract;
     private int Salary;
     private Date dateCreate;
@@ -24,10 +26,11 @@ public class Offer {
     public Offer() {
     }
 
-    public Offer(String title, String about, String place, String contract, int salary, Date dateCreate) {
-        this.title = title;
+    public Offer(String about, String place, int lon, int lat, String contract, int salary, Date dateCreate) {
         this.about = about;
         this.place = place;
+        this.lon = lon;
+        this.lat = lat;
         this.contract = contract;
         Salary = salary;
         this.dateCreate = dateCreate;
@@ -87,5 +90,29 @@ public class Offer {
 
     public void setDateCreate(Date dateCreate) {
         this.dateCreate = dateCreate;
+    }
+
+    public int getLon() {
+        return lon;
+    }
+
+    public void setLon(int lon) {
+        this.lon = lon;
+    }
+
+    public int getLat() {
+        return lat;
+    }
+
+    public void setLat(int lat) {
+        this.lat = lat;
+    }
+
+    public List<Tags> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tags> tags) {
+        this.tags = tags;
     }
 }

@@ -13,12 +13,12 @@ public class RestCvController {
     @Autowired
     private CvRepository cvr;
 
-    @RequestMapping(value = "/cv/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/api/cv/{id}",method = RequestMethod.GET)
     public Cv cv(@PathVariable("id") long id){
         return cvr.findOne(id);
 
     }
-    @RequestMapping(value = "/cv/{id}",method = RequestMethod.PUT)
+    @RequestMapping(value = "/api/cv/{id}",method = RequestMethod.PUT)
     public Boolean editCv(@PathVariable("id") long id, Cv cv){
         cv.setId(id);
         cvr.save(cv);

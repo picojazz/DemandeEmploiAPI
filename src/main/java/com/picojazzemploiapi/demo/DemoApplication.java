@@ -24,7 +24,7 @@ public class DemoApplication {
 		ApplicationContext ctx =
 				SpringApplication.run(DemoApplication.class, args);
 		OfferRepository or = ctx.getBean(OfferRepository.class);
-		or.save(new Offer("web dev fullstack","hgghghghgjghffffghfghfghfg","dakar","cdi",150000,new Date()));
+		//or.save(new Offer("web dev fullstack","hgghghghgjghffffghfghfghfg","dakar","cdi",150000,new Date()));
 		/*UserRepository ur = ctx.getBean(UserRepository.class);
 		CvRepository cvr = ctx.getBean(CvRepository.class);
 		Cv cv = new Cv(ur.findOne(new Long(2)));

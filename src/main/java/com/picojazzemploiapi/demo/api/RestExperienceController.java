@@ -1,5 +1,6 @@
 package com.picojazzemploiapi.demo.api;
 
+import com.picojazzemploiapi.demo.dao.CvRepository;
 import com.picojazzemploiapi.demo.dao.ExperienceRepository;
 import com.picojazzemploiapi.demo.entities.Experience;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,32 +15,36 @@ import java.util.List;
 public class RestExperienceController {
     @Autowired
     private ExperienceRepository er;
+    @Autowired
+    private CvRepository cvr;
 
-    @RequestMapping(value = "/experiences", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/experiences", method = RequestMethod.GET)
     public List<Experience> getAllExperiences(){
         return er.findAll();
     }
 
-    @RequestMapping(value = "/experiences/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/api/experiences/{id}",method = RequestMethod.GET)
     public Experience Experience(@PathVariable("id") long id){
         return er.findOne(id);
 
     }
 
-    @RequestMapping(value = "/experiences",method = RequestMethod.POST)
-    public boolean addExperience(Experience experience){
+    @RequestMapping(value = "/api/experiences",method = RequestMethod.POST)
+    public boolean addExperience(Experience experience,long idCV){
+        experience.setCv(cvr.findOne(idCV));
         er.save(experience);
         return true;
 
     }
-    @RequestMapping(value = "/experiences/{id}",method = RequestMethod.PUT)
-    public boolean editExperience(@PathVariable("id") long id, Experience experience){
+    @RequestMapping(value = "/api/experiences/{id}",method = RequestMethod.PUT)
+    public boolean editExperience(@PathVariable("id") long id, Experience experience,long idCV){
         experience.setId(id);
+        experience.setCv(cvr.findOne(idCV));
         er.save(experience);
         return true;
 
     }
-    @RequestMapping(value = "/experiences/{id}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/api/experiences/{id}",method = RequestMethod.DELETE)
     public boolean deleteExperience(@PathVariable("id") long id){
         er.delete(id);
         return true;
