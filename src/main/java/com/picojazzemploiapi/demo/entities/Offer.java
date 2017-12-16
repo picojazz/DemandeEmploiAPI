@@ -16,7 +16,7 @@ public class Offer {
     private int lat;
     private String contract;
     private int Salary;
-    private Date dateCreate;
+    private String dateCreate;
     @ManyToMany
     @JoinTable(name = "offerTags",joinColumns = {@JoinColumn(name="offerId")},inverseJoinColumns = {@JoinColumn(name="tagsId")})
     private List<Tags> tags;
@@ -26,7 +26,8 @@ public class Offer {
     public Offer() {
     }
 
-    public Offer(String about, String place, int lon, int lat, String contract, int salary, Date dateCreate) {
+    public Offer(String title ,String about, String place, int lon, int lat, String contract, int salary, String dateCreate) {
+        this.title = title;
         this.about = about;
         this.place = place;
         this.lon = lon;
@@ -84,11 +85,11 @@ public class Offer {
         Salary = salary;
     }
 
-    public Date getDateCreate() {
+    public String getDateCreate() {
         return dateCreate;
     }
 
-    public void setDateCreate(Date dateCreate) {
+    public void setDateCreate(String dateCreate) {
         this.dateCreate = dateCreate;
     }
 
