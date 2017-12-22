@@ -2,11 +2,9 @@ package com.picojazzemploiapi.demo.api;
 
 import com.picojazzemploiapi.demo.dao.OfferRepository;
 import com.picojazzemploiapi.demo.entities.Offer;
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,8 +15,8 @@ public class RestOfferController {
     private OfferRepository or;
 
     @RequestMapping(value = "/api/offers",method = RequestMethod.GET)
-    public List<Offer> offers(){
-        return or.findAll();
+    public List<Offer> offers(@RequestParam(name = "p",defaultValue = "") String rech){
+        return or.searchOffer("%"+rech+"%");
     }
 
     @RequestMapping(value = "/api/offers/{id}",method = RequestMethod.GET)
