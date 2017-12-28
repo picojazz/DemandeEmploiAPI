@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface OfferRepository extends JpaRepository<Offer,Long> {
-    @Query("select o from Offer o where o.title like :x")
+    @Query("select o from Offer o where o.title like :x  order by o.dateCreate desc ")
     public List<Offer> searchOffer(@Param("x") String rech);
+
+
 }

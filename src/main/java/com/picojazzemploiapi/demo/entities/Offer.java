@@ -12,8 +12,9 @@ public class Offer {
     @Lob
     private String about;
     private String place;
-    private int lon;
-    private int lat;
+    private String company;
+    private double lon;
+    private double lat;
     private String contract;
     private int Salary;
     private String dateCreate;
@@ -26,7 +27,7 @@ public class Offer {
     public Offer() {
     }
 
-    public Offer(String title ,String about, String place, int lon, int lat, String contract, int salary, String dateCreate) {
+    public Offer(String title ,String about, String place, double lon, double lat, String contract, int salary, String dateCreate, String company) {
         this.title = title;
         this.about = about;
         this.place = place;
@@ -35,6 +36,7 @@ public class Offer {
         this.contract = contract;
         Salary = salary;
         this.dateCreate = dateCreate;
+        this.company = company;
     }
 
     public Long getId() {
@@ -93,7 +95,7 @@ public class Offer {
         this.dateCreate = dateCreate;
     }
 
-    public int getLon() {
+    public double getLon() {
         return lon;
     }
 
@@ -101,7 +103,7 @@ public class Offer {
         this.lon = lon;
     }
 
-    public int getLat() {
+    public double getLat() {
         return lat;
     }
 
@@ -115,5 +117,13 @@ public class Offer {
 
     public void setTags(List<Tags> tags) {
         this.tags = tags;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 }
