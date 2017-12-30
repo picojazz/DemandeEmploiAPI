@@ -5,17 +5,17 @@ import com.picojazzemploiapi.demo.dao.UserRepository;
 import com.picojazzemploiapi.demo.dao.UserService;
 import com.picojazzemploiapi.demo.entities.Users;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.security.Principal;
+
 import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
@@ -25,9 +25,15 @@ public class RestUserController {
     @Autowired
     private UserService us;
 
-    @RequestMapping(value = "/users",method = RequestMethod.GET)
+
+    @RequestMapping(value = "/api/users",method = RequestMethod.GET)
     public List<Users> getAllUsers(){
         return ur.findAll();
+
+    }
+    @RequestMapping(value = "/api/users/{id}",method = RequestMethod.GET)
+    public Users getAllUsers(@PathVariable("id") long id){
+        return ur.findOne(id);
 
     }
     @RequestMapping(value = "/register",method = RequestMethod.POST)
@@ -44,17 +50,17 @@ public class RestUserController {
     }
 
     @RequestMapping(value = "/api/me",method = RequestMethod.GET)
-    public Long me(Principal principal){
+    public String me(@RequestParam(name = "username") String username , @RequestParam(name = "password")String password){
 
-        return ur.findByUsername(principal.getName()).getId();
-    }
 
-    @RequestMapping(value = "/logout")
-    public Boolean logout(HttpServletRequest req, HttpServletResponse resp){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
-            new SecurityContextLogoutHandler().logout(req,resp,auth);
+        Users user = ur.connect(username,password);
+        if(user != null){
+            return "{\"status\": \"ok\",\"id\": "+user.getId()+"}";
+        }else{
+            return "{\"status\": \"ko\"}";
         }
-        return true;
+
     }
+
+
 }

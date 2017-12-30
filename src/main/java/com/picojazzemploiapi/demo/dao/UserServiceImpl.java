@@ -4,7 +4,7 @@ import com.picojazzemploiapi.demo.entities.Cv;
 import com.picojazzemploiapi.demo.entities.Role;
 import com.picojazzemploiapi.demo.entities.Users;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,8 +15,7 @@ public class UserServiceImpl implements UserService{
     private UserRepository ur;
     @Autowired
     private RoleRepository rr;
-    @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Autowired
     private CvRepository cvr;
 
@@ -27,7 +26,7 @@ public class UserServiceImpl implements UserService{
         roles.add(role);
         user.setRoles(roles);
         user.setActive(1);
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
         cvr.save(new Cv(ur.save(user)));
     }
