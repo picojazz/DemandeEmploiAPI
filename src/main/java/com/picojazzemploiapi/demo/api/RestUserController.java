@@ -55,10 +55,26 @@ public class RestUserController {
 
         Users user = ur.connect(username,password);
         if(user != null){
-            return "{\"status\": \"ok\",\"id\": "+user.getId()+"}";
+            return "{\"status\": \"ok\",\"id\": \""+user.getId()+"\"}";
         }else{
             return "{\"status\": \"ko\"}";
         }
+
+    }
+    @RequestMapping(value = "/api/add-fav", method=RequestMethod.GET)
+    public void addFav(@RequestParam(name = "idU")Long idUser,@RequestParam(name = "idO")Long idOffer){
+        us.addFav(idUser,idOffer);
+    }
+    @RequestMapping(value = "/api/verif-fav", method=RequestMethod.GET)
+    public String verifFav(@RequestParam(name = "idU")Long idUser,@RequestParam(name = "idO")Long idOffer){
+       if(us.verifFav(idUser,idOffer)){
+           return "{\"status\": \"ok\"}";
+       }
+        return "{\"status\": \"ko\"}";
+    }
+    @RequestMapping(value = "/api/delete-fav", method=RequestMethod.GET)
+    public void deleteFav(@RequestParam(name = "idU")Long idUser,@RequestParam(name = "idO")Long idOffer){
+        us.deleteFav(idUser,idOffer);
 
     }
 

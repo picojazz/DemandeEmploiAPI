@@ -1,5 +1,7 @@
 package com.picojazzemploiapi.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +23,9 @@ public class Offer {
     @ManyToMany
     @JoinTable(name = "offerTags",joinColumns = {@JoinColumn(name="offerId")},inverseJoinColumns = {@JoinColumn(name="tagsId")})
     private List<Tags> tags;
+    @ManyToMany(mappedBy = "offers")
+    @JsonIgnore
+    private List<Users> users;
 
 
 
@@ -95,22 +100,6 @@ public class Offer {
         this.dateCreate = dateCreate;
     }
 
-    public double getLon() {
-        return lon;
-    }
-
-    public void setLon(int lon) {
-        this.lon = lon;
-    }
-
-    public double getLat() {
-        return lat;
-    }
-
-    public void setLat(int lat) {
-        this.lat = lat;
-    }
-
     public List<Tags> getTags() {
         return tags;
     }
@@ -125,5 +114,29 @@ public class Offer {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public List<Users> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<Users> users) {
+        this.users = users;
     }
 }

@@ -20,12 +20,15 @@ public class Users {
     @NotEmpty
     private String email;
     private int active;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany()
     @JoinTable(name = "users_roles",joinColumns = { @JoinColumn(name = "user_id") },inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private List<Role> roles;
     @OneToOne
     @PrimaryKeyJoinColumn
     private Cv cv;
+    @ManyToMany()
+    @JoinTable(name = "users_offers",joinColumns = { @JoinColumn(name = "user_id") },inverseJoinColumns = {@JoinColumn(name = "offer_id")})
+    private List<Offer> offers;
 
 
     public Users() {
@@ -91,6 +94,14 @@ public class Users {
 
     public void setCv(Cv cv) {
         this.cv = cv;
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
     }
 
     @Override
