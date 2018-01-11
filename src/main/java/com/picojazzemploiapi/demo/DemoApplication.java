@@ -24,7 +24,7 @@ public class DemoApplication {
 		ApplicationContext ctx =
 				SpringApplication.run(DemoApplication.class, args);
 		OfferRepository or = ctx.getBean(OfferRepository.class);
-		/*for (int i = 0 ; i < 10 ; i++) {
+		for (int i = 0 ; i < 10 ; i++) {
 			or.save(new Offer("Développeur Fullstack Java Angular 4 H/F", "Dans le cadre de la refonte de son portail assurance vie et prévoyance, notre client recherche un développeur expérimenté H/F \n" +
 					"\n" +
 					"Vos principales missions consisteront à :\n" +
@@ -45,7 +45,7 @@ public class DemoApplication {
 					"Clean code\n" +
 					"Vous appréciez le travail en équipe et dans un environnement agile.\n" +
 					"il y a 1 heure - sauvegarder - voir l'offre d'origine", "dakar", -17.4730629, 14.7115395, "cdi", 6000000, "2017-12-27", "Sonatel Senegal"));
-		}*/
+		}
 
 		/*UserRepository ur = ctx.getBean(UserRepository.class);
 		CvRepository cvr = ctx.getBean(CvRepository.class);
