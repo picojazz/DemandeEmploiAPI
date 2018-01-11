@@ -8,8 +8,7 @@ import javax.persistence.*;
 public class Formation {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String begin;
-    private String end;
+    private String date;
     private String name;
     private String school;
     @ManyToOne
@@ -32,20 +31,12 @@ public class Formation {
         this.id = id;
     }
 
-    public String getBegin() {
-        return begin;
+    public String getDate() {
+        return date;
     }
 
-    public void setBegin(String begin) {
-        this.begin = begin;
-    }
-
-    public String getEnd() {
-        return end;
-    }
-
-    public void setEnd(String end) {
-        this.end = end;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getName() {

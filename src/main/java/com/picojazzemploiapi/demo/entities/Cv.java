@@ -19,7 +19,7 @@ public class Cv {
     private String email;
     private String adress;
     private int age;
-    private long tel;
+    private String tel;
     @OneToOne(mappedBy = "cv")
     @PrimaryKeyJoinColumn
     @JsonIgnore
@@ -84,11 +84,11 @@ public class Cv {
         this.age = age;
     }
 
-    public long getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(long tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 

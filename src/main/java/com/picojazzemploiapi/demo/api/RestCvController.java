@@ -3,10 +3,7 @@ package com.picojazzemploiapi.demo.api;
 import com.picojazzemploiapi.demo.dao.CvRepository;
 import com.picojazzemploiapi.demo.entities.Cv;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class RestCvController {
@@ -18,11 +15,19 @@ public class RestCvController {
         return cvr.findOne(id);
 
     }
-    @RequestMapping(value = "/api/cv/{id}",method = RequestMethod.PUT)
-    public Boolean editCv(@PathVariable("id") long id, Cv cv){
-        cv.setId(id);
+    @RequestMapping(value = "/api/cv/{id}",method = RequestMethod.POST)
+    public String editCv(@PathVariable("id") long id, @RequestParam(defaultValue ="" ) String firstName , @RequestParam(defaultValue ="" )String lastName,
+                         @RequestParam(defaultValue ="" )String  email, @RequestParam(defaultValue ="" )String adress, @RequestParam(defaultValue = "0" )int age , @RequestParam(defaultValue ="" )String tel){
+        Cv cv = cvr.findOne(id);
+        cv.setEmail(email);
+        cv.setAdress(adress);
+        cv.setFirstName(firstName);
+        cv.setLastName(lastName);
+        cv.setTel(tel);
+        cv.setAge(age);
+
         cvr.save(cv);
-        return true;
+        return "{\"status\": \"ok\"}";
 
     }
 }
