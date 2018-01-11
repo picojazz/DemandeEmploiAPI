@@ -53,9 +53,7 @@ public class Experience {
         return position;
     }
 
-    public void setPostion(String position) {
-        this.position = position;
-    }
+
 
     public String getCompany() {
         return company;
@@ -79,5 +77,9 @@ public class Experience {
 
     public void setCv(Cv cv) {
         this.cv = cv;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 }

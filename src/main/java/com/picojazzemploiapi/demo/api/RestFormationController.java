@@ -28,24 +28,25 @@ public class RestFormationController {
 
     }
     @RequestMapping(value = "/api/formations",method = RequestMethod.POST)
-    public boolean addFormation(Formation formation,long idCV){
+    public String addFormation(Formation formation,long idCV,long id){
         formation.setCv(cvr.findOne(idCV));
-        fr.save(formation);
-        return true;
+
+        if(id == -1) {
+
+            fr.save(formation);
+        }else{
+
+            formation.setId(id);
+            fr.save(formation);
+        }
+        return "{\"status\": \"ok\"}";
 
     }
-    @RequestMapping(value = "/api/formations/{id}",method = RequestMethod.PUT)
-    public boolean editFormation(@PathVariable("id") long id, Formation formation,long idCV){
-        formation.setId(id);
-        formation.setCv(cvr.findOne(idCV));
-        fr.save(formation);
-        return true;
 
-    }
     @RequestMapping(value = "/api/formations/{id}",method = RequestMethod.DELETE)
-    public boolean deleteFormation(@PathVariable("id") long id){
+    public String deleteFormation(@PathVariable("id") long id){
         fr.delete(id);
-        return true;
+        return "{\"status\": \"ok\"}";
 
     }
 }

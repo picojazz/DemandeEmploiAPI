@@ -30,24 +30,26 @@ public class RestExperienceController {
     }
 
     @RequestMapping(value = "/api/experiences",method = RequestMethod.POST)
-    public boolean addExperience(Experience experience,long idCV){
+    public String addExperience(Experience experience,long idCV,long id){
         experience.setCv(cvr.findOne(idCV));
-        er.save(experience);
-        return true;
+
+
+        if(id == -1) {
+
+            er.save(experience);
+        }else{
+            experience.setId(id);
+            er.save(experience);
+
+        }
+        return "{\"status\": \"ok\"}";
 
     }
-    @RequestMapping(value = "/api/experiences/{id}",method = RequestMethod.PUT)
-    public boolean editExperience(@PathVariable("id") long id, Experience experience,long idCV){
-        experience.setId(id);
-        experience.setCv(cvr.findOne(idCV));
-        er.save(experience);
-        return true;
 
-    }
     @RequestMapping(value = "/api/experiences/{id}",method = RequestMethod.DELETE)
-    public boolean deleteExperience(@PathVariable("id") long id){
+    public String deleteExperience(@PathVariable("id") long id){
         er.delete(id);
-        return true;
+        return "{\"status\": \"ok\"}";
 
     }
 
