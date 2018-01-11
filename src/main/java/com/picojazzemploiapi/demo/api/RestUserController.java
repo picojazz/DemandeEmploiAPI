@@ -37,12 +37,13 @@ public class RestUserController {
 
     }
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public Boolean register(@Valid Users user , BindingResult bindingResult){
-        if(ur.findByEmail(user.getEmail()) != null || (ur.findByUsername(user.getUsername()) != null) || bindingResult.hasErrors()){
-            return false;
+    public String register(Users user ){
+        if(ur.findByEmail(user.getEmail()) != null || (ur.findByUsername(user.getUsername()) != null) ){
+            return "{\"status\": \"ko\"}";
         }
-        us.saveUser(user);
-        return true;
+
+           String id = us.saveUser(user);
+        return "{\"status\": \"ok\",\"id\": \""+id+"\"}";
     }
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public Boolean getRegister(){

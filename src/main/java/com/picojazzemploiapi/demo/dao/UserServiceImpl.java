@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
     private CvRepository cvr;
 
     @Override
-    public void saveUser(Users user) {
+    public String saveUser(Users user) {
         Role role = rr.findByRole("user");
         List<Role> roles = new ArrayList<>();
         roles.add(role);
@@ -30,7 +30,10 @@ public class UserServiceImpl implements UserService{
         user.setActive(1);
         //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
-        cvr.save(new Cv(ur.save(user)));
+        Users u = ur.save(user);
+        Cv c = new Cv("0",u);
+        cvr.save(c);
+        return String.valueOf(u.getId());
     }
 
     @Override

@@ -32,7 +32,8 @@ public class Cv {
     public Cv() {
     }
 
-    public Cv(Users user) {
+    public Cv(String tel, Users user) {
+        this.tel = tel;
         this.user = user;
     }
 
